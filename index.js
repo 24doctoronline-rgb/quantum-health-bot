@@ -4,34 +4,22 @@
 const {
   default: makeWASocket,
   useMultiFileAuthState,
+  fetchLatestBaileysVersion,
   DisconnectReason
-} = require('@adiwajshing/baileys');
-
-async function startBot() {
-  const { state, saveCreds } = await useMultiFileAuthState('auth');
-
-  const sock = makeWASocket({
-    auth: state,
-    printQRInTerminal: true
-  });
-
-  sock.ev.on('creds.update', saveCreds);
-}
-
-startBot();
-
+} = require("@whiskeysockets/baileys");
 
 const fs = require("fs");
 const axios = require("axios");
 
- 
-
+// WIT.AI API Key
 const WIT_API_KEY = "FW4CMRGJI3NCFAMDRNEI7NTFUBWVFG55";  
 
 // Memory to avoid repeat replies
 const repliedUsers = new Set();
 
 async function startBot() {
+  const { state, saveCreds } = await useMultiFileAuthState("auth");
+
   const { version } = await fetchLatestBaileysVersion();
 
   const sock = makeWASocket({
@@ -40,7 +28,7 @@ async function startBot() {
     printQRInTerminal: true
   });
 
-  sock.ev.on("creds.update", saveState);
+  sock.ev.on("creds.update", saveCreds);
 
   sock.ev.on("connection.update", (update) => {
     const { connection, lastDisconnect } = update;
@@ -115,30 +103,30 @@ function detectDoctor(text) {
       "Dr Zeeshan",
       "Skin Specialist",
       "Fee: 1000",
-      "Mon–Sat",
-      "Quantum Health Care"
+      "Mon & Fri (Sheikhupura)\nWed (Hafizabad)",
+      "Jinnah Medical & Diagnostic Center (Sheikhupura) / Sherazi Hospital (Hafizabad)"
     );
   }
 
   // GASTRO + GENERAL
   if (text.match(/pet|gas|ulcer|vomit|diarrhea|bukhar|fever/)) {
     return doctorMsg(
-      "Dr Salman",
+      "Dr Salman Ahmad Ansari",
       "Gastro + General Physician",
-      "Fee: 1000",
-      "Mon–Sat",
-      "Quantum Health Care"
+      "Fee: 1500",
+      "Mon, Wed, Thu",
+      "Luqman Hospital Dil Chowk City Sheikhupura"
     );
   }
 
   // ENT
   if (text.match(/kan|naak|gala|ear|nose|throat/)) {
     return doctorMsg(
-      "Dr Ibrar",
+      "Dr Ibrar Asif",
       "ENT Specialist",
       "Fee: 1000",
-      "Mon–Sat",
-      "Quantum Health Care"
+      "Mon–Thu & Sat (Sheikhupura)\nWed (Hafizabad)",
+      "Luqman Medical Center (Sheikhupura) / Sherazi Hospital (Hafizabad)"
     );
   }
 
@@ -148,8 +136,8 @@ function detectDoctor(text) {
       "Dr Awais Younas",
       "Neuro Specialist",
       "Fee: 1000",
-      "Mon–Sat",
-      "Quantum Health Care"
+      "Mon, Wed, Thu (Sheikhupura)\nSat (Sheikhupura)\nSat only (Hafizabad)",
+      "Siddique Hospital (Sheikhupura) / Saqib Bashir Hospital (Hafizabad)"
     );
   }
 
