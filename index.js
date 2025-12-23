@@ -13,7 +13,7 @@ const axios = require("axios");
 
 const { state, saveState } = useSingleFileAuthState("./auth.json");
 
-const WIT_API_KEY = "PASTE_YOUR_WIT_AI_KEY_HERE"; // ← tumhari wit.ai key
+const WIT_API_KEY = "FW4CMRGJI3NCFAMDRNEI7NTFUBWVFG55"; // ← tumhari wit.ai key
 
 // Memory to avoid repeat replies
 const repliedUsers = new Set();
