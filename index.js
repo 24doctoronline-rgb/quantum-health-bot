@@ -1,6 +1,9 @@
 // Quantum Health Care WhatsApp Bot
 // FULL FINAL VERSION (Text + Voice Handling + Doctors + Symptoms + Anti-Spam)
 
+const crypto = require("crypto");
+global.crypto = crypto.webcrypto;
+
 const {
   default: makeWASocket,
   useMultiFileAuthState,
