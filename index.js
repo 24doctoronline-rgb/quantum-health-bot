@@ -3,15 +3,28 @@
 
 const {
   default: makeWASocket,
-  useSingleFileAuthState,
-  fetchLatestBaileysVersion,
+  useMultiFileAuthState,
   DisconnectReason
-} = require("@whiskeysockets/baileys");
+} = require('@adiwajshing/baileys');
+
+async function startBot() {
+  const { state, saveCreds } = await useMultiFileAuthState('auth');
+
+  const sock = makeWASocket({
+    auth: state,
+    printQRInTerminal: true
+  });
+
+  sock.ev.on('creds.update', saveCreds);
+}
+
+startBot();
+
 
 const fs = require("fs");
 const axios = require("axios");
 
-const { state, saveState } = useSingleFileAuthState("./auth.json");
+ 
 
 const WIT_API_KEY = "FW4CMRGJI3NCFAMDRNEI7NTFUBWVFG55";  
 
