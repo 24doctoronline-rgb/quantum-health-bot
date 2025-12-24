@@ -101,7 +101,7 @@ TEXT me likhein. Shukriya 🙏`
 // 🧠 SYMPTOMS → DOCTOR LOGIC
 function detectDoctor(text) {
   // SKIN
-  if (text.match(/skin|khujli|daane|rash|acne|fungal/)) {
+  if (text.match(/skin|khujli |dr zeeshan|zeeshan||daane|rash|acne|fungal/)) {
     return doctorMsg(
       "Dr Zeeshan",
       "Skin Specialist",
@@ -112,7 +112,7 @@ function detectDoctor(text) {
   }
 
   // GASTRO + GENERAL
-  if (text.match(/pet|gas|ulcer|vomit|diarrhea|bukhar|fever/)) {
+  if (text.match(/pet|gas|ulcer|vomit|diarrhea|bukhar|fever|Salman Ahmad Ansari||Dr salman|/)) {
     return doctorMsg(
       "Dr Salman Ahmad Ansari",
       "Gastro + General Physician",
@@ -123,7 +123,7 @@ function detectDoctor(text) {
   }
 
   // ENT
-  if (text.match(/kan|naak|gala|ear|nose|throat/)) {
+  if (text.match(/kan|naak|gala|ear|nose|throat|dr ibrar asif|ibrar|abrar|/)) {
     return doctorMsg(
       "Dr Ibrar Asif",
       "ENT Specialist",
@@ -134,7 +134,7 @@ function detectDoctor(text) {
   }
 
   // NEURO
-  if (text.match(/headache|migraine|chakkar|brain|fits/)) {
+  if (text.match(/headache|migraine|chakkar|brain|fits|dr awais younas|Awais|awais/)) {
     return doctorMsg(
       "Dr Awais Younas",
       "Neuro Specialist",
@@ -145,7 +145,7 @@ function detectDoctor(text) {
   }
 
   // PSYCHOLOGIST
-  if (text.match(/stress|depression|anxiety|neend|ghabrahat/)) {
+  if (text.match(/stress|depression|anxiety|neend|ghabrahat|dr hammad khalif|hammad|/)) {
     return `🧠 *Dr Hammad Khalif*
 Psychologist Specialist
 
@@ -161,7 +161,7 @@ Wed | 10am–2pm
   }
 
   // PULMONOLOGIST
-  if (text.match(/saans|asthma|cough|lungs|tb/)) {
+  if (text.match(/saans|asthma|cough|lungs|tb|dr faisal nadeem|faisal nadeem|/)) {
     return `🫁 *Dr Hafiz M. Faisal Nadeem*
 Pulmonologist Specialist
 
